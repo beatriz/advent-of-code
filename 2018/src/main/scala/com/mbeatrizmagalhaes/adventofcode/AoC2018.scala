@@ -3,7 +3,7 @@ package com.mbeatrizmagalhaes.adventofcode
 import scala.io.Source
 
 object AoC2018 extends App {
-  val problemN: String = "12"
+  val problemN: String = "22"
 
   val problem: Problem = Class.forName(s"com.mbeatrizmagalhaes.adventofcode.Problem_$problemN").newInstance().asInstanceOf[Problem]
 

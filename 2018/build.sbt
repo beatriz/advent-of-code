@@ -8,5 +8,7 @@ lazy val root = (project in file(".")).
       version      := "0.1.0-SNAPSHOT"
     )),
     name := "advent-of-code-2018",
-    libraryDependencies += scalaTest % Test
+    libraryDependencies += scalaTest % Test,
+    scalacOptions := Seq(
+      "-language:implicitConversions")
   )
