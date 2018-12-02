@@ -1,0 +1,13 @@
+# project output directory
+**/target/
+
+# system and IDE setting files
+*.iml
+.DS_Store
+.ensime
+.ensime_cache
+.ensime_lucene
+.idea
+.idea_modules
+
+input.txt
