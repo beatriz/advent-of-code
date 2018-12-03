@@ -1,6 +1,6 @@
 package com.mbeatrizmagalhaes.adventofcode
 
-class Problem_22 extends Problem[String] {
+class Problem2_2 extends Problem[String] {
   implicit def bool2int(b:Boolean): Int = if (b) 1 else 0
 
   override def solve(lines: List[String]) = {

@@ -1,6 +1,6 @@
 package com.mbeatrizmagalhaes.adventofcode
 
-class Problem_12 extends Problem[Double] {
+class Problem1_2 extends Problem[Double] {
   override def solve(lines: List[String]): Double = {
     val fullValues = lines.map(_.toDouble)
     def findRepeatedFrequency(current: Double, foundFrequencies: List[Double], values: List[Double]): Double =
