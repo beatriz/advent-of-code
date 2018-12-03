@@ -1,11 +1,11 @@
 package com.mbeatrizmagalhaes.adventofcode
 
-class Problem_22 extends Problem {
+class Problem_22 extends Problem[String] {
   implicit def bool2int(b:Boolean): Int = if (b) 1 else 0
 
   override def solve(lines: List[String]) = {
     val (word1, word2) = find(lines.head, lines.tail)
-    word1 + " " + word2
+    s"\n$word1\n$word2"
   }
 
   def find(current: String, remaining: List[String]): (String, String) = {
