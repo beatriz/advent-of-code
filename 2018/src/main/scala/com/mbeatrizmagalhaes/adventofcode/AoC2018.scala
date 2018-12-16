@@ -8,19 +8,19 @@ object AoC2018 extends App {
   val isTest = Try(args(1))
   val problem =
     Class.forName(s"com.mbeatrizmagalhaes.adventofcode.Problem$problemN")
-      .newInstance().asInstanceOf[Problem[_]]
+      .newInstance().asInstanceOf[Problems[_,_]]
 
   val input: List[String] = {
     val suffix = Try(args(1)).toOption.map(_ => "_test").getOrElse("")
-    Source.fromFile(s"input/${problemN.take(1)}$suffix.txt").getLines.toList
+    Source.fromFile(s"input/$problemN$suffix.txt").getLines.toList
   }
 
-  val result = problem.solve(input)
+  val (result1, result2) = problem.solve(input)
 
-  println(s"The result for problem $problemN is: $result")
-
+  println(s"The result for part 1 of day $problemN is: $result1")
+  println(s"The result for part 2 of day $problemN is: $result2")
 }
 
-trait Problem[T] {
-  def solve(lines: List[String]): T
+trait Problems[A, B] {
+  def solve(lines: List[String]): (A, B)
 }

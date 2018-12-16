@@ -1,17 +1,6 @@
 package com.mbeatrizmagalhaes.adventofcode
 
-class Problem4_1 extends Problem[Int] {
-  override def solve(lines: List[String]) = {
-    val mapWithMinutes = Problem4_1.mapWithMinutes(lines)
-
-    val maxId = mapWithMinutes.mapValues(_.size).maxBy(_._2)._1
-    val maxMinute = mapWithMinutes(maxId).groupBy(identity).mapValues(_.size).maxBy(_._2)._1
-    maxId.toInt * maxMinute
-  }
-
-}
-
-object Problem4_1 {
+class Problem4 extends Problems[Int, Int] {
   def getMinutes(line: String) = {
     val minMatch = "\\:(.*?)\\]".r
     minMatch.findFirstIn(line).get.drop(1).dropRight(1).toInt
@@ -33,4 +22,24 @@ object Problem4_1 {
   }.groupBy(_._1).map { case (k,v) => (k,v.flatMap(_._2))}
 
   def minutesListToCountMap(min: List[String]) = min.groupBy(identity).mapValues(_.size)
+
+  override def solve(lines: List[String]) = {
+    val mapMinutes = mapWithMinutes(lines)
+
+    def part1 = {
+      val maxId = mapMinutes.mapValues(_.size).maxBy(_._2)._1
+      val maxMinute = mapMinutes(maxId).groupBy(identity).mapValues(_.size).maxBy(_._2)._1
+      maxId.toInt * maxMinute
+    }
+
+    def part2 = {
+      val maxGuardWithMinutes = mapMinutes.filter(_._2.nonEmpty).mapValues(_.groupBy(identity).mapValues(_.size).maxBy(_._2)).maxBy(_._2._2)
+      val maxId = maxGuardWithMinutes._1
+      val maxMinute = maxGuardWithMinutes._2._1
+      maxId.toInt * maxMinute
+    }
+
+    (part1, part2)
+  }
+
 }

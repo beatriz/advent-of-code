@@ -1,12 +1,6 @@
 package com.mbeatrizmagalhaes.adventofcode
 
-class Problem5_1 extends Problem[Int] {
-  override def solve(lines: List[String]) = {
-    Problem5_1.reactPolymer(lines.head).length
-  }
-}
-
-object Problem5_1 {
+class Problem5 extends Problems[Int, Int] {
   def reactPolymer(polymer: String): String= {
     def removeOpposites(remaining: String, acc: String): String = {
       if (remaining.length <= 1) acc + remaining
@@ -23,5 +17,17 @@ object Problem5_1 {
       else removeOppositesCycle(afterRemove, removeOpposites(afterRemove, ""))
 
     removeOppositesCycle("", polymer)
+  }
+
+  override def solve(lines: List[String]) = {
+    val polymer = lines.head
+    val distinct = polymer.toLowerCase.distinct
+
+    val withoutUnitsSizes = distinct.map { c =>
+      val withoutUnits = polymer.replace(c.toString, "").replace(c.toUpper.toString, "")
+      reactPolymer(withoutUnits).length
+    }
+
+    (reactPolymer(polymer).length, withoutUnitsSizes.min)
   }
 }

@@ -1,6 +1,6 @@
 package com.mbeatrizmagalhaes.adventofcode
 
-class Problem7_2 extends Problem[String] {
+class Problem7 extends Problems[String, String] {
   override def solve(lines: List[String]) = {
     val stepsDependencies: Map[String, List[String]] = lines.map{ l =>
       val s = l.split(" ")
@@ -16,7 +16,7 @@ class Problem7_2 extends Problem[String] {
       }
 
     val allSteps = stepsDependencies.keys.toSet ++ stepsDependencies.values.flatten.toSet
-    runSteps(stepsDependencies, allSteps, Seq.empty).mkString
+    (runSteps(stepsDependencies, allSteps, Seq.empty).mkString, "")
   }
 }
 

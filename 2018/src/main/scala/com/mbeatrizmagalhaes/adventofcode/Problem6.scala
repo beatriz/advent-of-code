@@ -2,9 +2,9 @@ package com.mbeatrizmagalhaes.adventofcode
 
 import scala.collection.mutable
 
-import com.mbeatrizmagalhaes.adventofcode.Problem6_1.Coordinate
+import com.mbeatrizmagalhaes.adventofcode.Problem6.Coordinate
 
-class Problem6_1 extends Problem[Int] {
+class Problem6 extends Problems[Int, Int] {
   def minimums(xs: Seq[Coordinate], x: Int, y: Int) = {
     val f: Coordinate => Int = _.distance(x, y)
     val minimums = (Seq(xs.head) /: xs.tail) {
@@ -41,6 +41,7 @@ class Problem6_1 extends Problem[Int] {
     }
 
     val areas = mutable.Map[Int, Int]()
+    var area = 0
     for (i <- matrixRev.keys) {
       areas(i) = matrixRev(i).length
     }
@@ -50,14 +51,17 @@ class Problem6_1 extends Problem[Int] {
           val thisCoordOwner = matrix((x, y))
           areas(thisCoordOwner) = 0
         }
+
+        val sum = coords.map(_.distance(x,y)).sum
+        if (sum < 10000) area += 1
       }
     }
 
-    areas.maxBy(_._2)._2
+    (areas.maxBy(_._2)._2, area)
   }
 }
 
-object Problem6_1 {
+object Problem6 {
   case class Coordinate(id: Int, x: Int, y: Int) {
     def distance(coord: Coordinate) = Math.abs(x - coord.x) + Math.abs(y - coord.y)
     def distance(x: Int, y: Int) = Math.abs(this.x - x) + Math.abs(this.y - y)
