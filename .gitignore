@@ -12,3 +12,5 @@
 
 .bloop
 .metals
+
+node_modules
