@@ -35,6 +35,8 @@ const work = (nums, input, relativeBase = 0, offset = 0) => {
   
   let advance = 0;
   let newRelativeBase = relativeBase;
+  let output;
+  let usedInput = false;
   
   if (inst.opcode === 1 || inst.opcode === 2){
     const val1 = getVal(1)
@@ -47,10 +49,11 @@ const work = (nums, input, relativeBase = 0, offset = 0) => {
   else if (inst.opcode === 3){
     const pos = getVal(1);
     nums[pos] = input;
+    usedInput = true;
     advance = 2;
   }
   else if (inst.opcode === 4) {
-    console.log(getVal(1));
+    output = getVal(1);
     advance = 2;
   }
   else if (inst.opcode <= 6) {
@@ -75,15 +78,18 @@ const work = (nums, input, relativeBase = 0, offset = 0) => {
     advance = 2;
   }
   
-  return { nums, newRelativeBase, newOffset: offset + advance };
+  return { nums, newRelativeBase, newOffset: offset + advance, output, usedInput };
 }
 
-const run = (n, input) => {
+const run = (n, inp) => {
+  const input = _.isArray(inp) ? inp : [inp];
   let relativeBase, offset = 0;
   let output = [];
   let nums = n;
+  let inputIndex = 0;
   while (true) {
-    const res = work(nums, input, relativeBase, offset);
+    const res = work(nums, input[inputIndex], relativeBase, offset);
+    if (res.usedInput && input.length > 1) { inputIndex = 1; }
     if (res.output !== undefined) { output.push(res.output); }
     if (res.end === true) {
       break;
@@ -92,6 +98,7 @@ const run = (n, input) => {
     relativeBase = res.newRelativeBase;
     offset = res.newOffset;
   }
+  return output;
 }
 
 module.exports = {run, work}
