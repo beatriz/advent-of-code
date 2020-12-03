@@ -13,5 +13,6 @@
 .bloop
 .metals
 metals.sbt
+.bsp
 
 node_modules
