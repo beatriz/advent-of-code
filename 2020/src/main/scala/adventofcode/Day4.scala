@@ -7,19 +7,21 @@ class Day4 extends Problem[Int, Int] {
   
   def validKeys(pass: Map[String, String]) = mandatoryKeys.subsetOf(pass.keySet)
 
-  def solve(input: String) = {
-    val passports = {
-      val (p, lastP) = input.split("\n").foldLeft((List[Map[String, String]](), Map.empty[String, String])){
-        case ((acc, currPass), line) =>
-          if (line.isEmpty) (currPass :: acc, Map.empty[String, String])
-          else (acc, currPass ++ line.split(" ").map{ entry =>
-            val s = entry.split(":")
-            (s(0), s(1))
-          }.toMap)
-      }
-      lastP :: p
-    }
 
+  def solve(input: String) = {
+    val passports = 
+      input.split("\n").foldLeft(List.empty[Map[String, String]]){
+        case (acc, line) =>
+          if (line.isEmpty) Map.empty[String, String] :: acc
+          else {
+            val currPass = acc.headOption.getOrElse(Map.empty[String, String])
+            (currPass ++ line.split(" ").map{ entry =>
+              val s = entry.split(":")
+              (s(0), s(1))
+            }.toMap) :: acc.drop(1)
+          }
+    }
+    
     val res1 = passports.count(validKeys)
 
     val res2 = passports.count{pass =>
