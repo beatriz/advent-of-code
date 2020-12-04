@@ -9,11 +9,13 @@ object AoC2020 extends App {
     .newInstance().asInstanceOf[Problem[_, _]]
   val isTest = Try(args(1)).toOption.isDefined
 
-  val input: Seq[String] = {
+  val file = {
     val fileName = if(isTest) "test" else "day" + problemN
-    Source.fromFile(s"input/$fileName.txt").getLines.toSeq
+    Source.fromFile(s"input/$fileName.txt")
   }
 
+  val input = file.mkString
+  file.close()
   val (res1, res2) = problem.solve(input)
 
   println(s"Day $problemN Part 1: $res1")
@@ -21,5 +23,5 @@ object AoC2020 extends App {
 }
 
 trait Problem[A, B] {
-  def solve(lines: Seq[String]): (A, B)
+  def solve(input: String): (A, B)
 }

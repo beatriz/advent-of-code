@@ -9,8 +9,8 @@ class Day2 extends Problem[Int, Int] {
     (min, max, char, pass)
   }
 
-  def solve(input: Seq[String]): (Int, Int) = {
-    input.foldLeft((0, 0)) {
+  def solve(input: String): (Int, Int) = {
+    input.split("\n").foldLeft((0, 0)) {
       case ((acc1, acc2), str) =>
         val (min, max, char, pass) = parse(str)
         val isValid1 = {

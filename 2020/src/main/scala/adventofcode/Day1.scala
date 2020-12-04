@@ -11,8 +11,8 @@ class Day1 extends Problem[Int, Int] {
       }
   }
   
-  def solve(input: Seq[String]) = {
-    val lines = input.map(_.toInt)
+  def solve(input: String) = {
+    val lines = input.split("\n").map(_.toInt)
 
     val res1 = solve1(lines)
     (res1._1 * res1._2, 
