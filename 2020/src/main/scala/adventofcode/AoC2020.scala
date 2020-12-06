@@ -5,12 +5,14 @@ import scala.util.Try
 
 object AoC2020 extends App {
   val problemN: String = args(0)
-  val problem = Class.forName(s"adventofcode.Day$problemN")
-    .newInstance().asInstanceOf[Problem[_, _]]
+  val problem = Class
+    .forName(s"adventofcode.Day$problemN")
+    .newInstance()
+    .asInstanceOf[Problem[_, _]]
   val isTest = Try(args(1)).toOption.isDefined
 
   val file = {
-    val fileName = if(isTest) "test" else "day" + problemN
+    val fileName = if (isTest) "test" else "day" + problemN
     Source.fromFile(s"input/$fileName.txt")
   }
 
