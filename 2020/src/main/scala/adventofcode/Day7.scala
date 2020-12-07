@@ -31,14 +31,10 @@ class Day7 extends Problem[Int, Int] {
   def solve2(map: Map[String, Set[BagInfo]], initial: String): Int = {
     def solve2Aux(search: BagInfo): Int = {
       val res = map.getOrElse(search.desc, Set.empty)
-      // println("res " + res)
-      if (res.isEmpty) {
-        search.n
-      } else {
-        // println(res.map(r => solve2Aux(r)))
-        search.n + search.n * (res.map(r => solve2Aux(r)).sum)
-      }
+      if (res.isEmpty) search.n
+      else search.n + search.n * (res.toList.map(r => solve2Aux(r)).sum)
     }
+
     solve2Aux(BagInfo(1, initial)) - 1
   }
 
