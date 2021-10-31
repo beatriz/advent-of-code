@@ -38,10 +38,10 @@ class Day9 extends Problem[Long, Long] {
     val lines = input.split("\n").map(_.toLong)
     val preambleSize = 25
     val initialPreamble = lines.take(preambleSize)
-    
+
     val (invalid, numbersUntilInvalid) =
       findInvalid(initialPreamble, lines.drop(preambleSize).take(1).head, lines.drop(preambleSize + 1), initialPreamble)
-    
+
     val listSum = findSum(numbersUntilInvalid.toList, invalid)
 
     (invalid, listSum.min + listSum.max)
