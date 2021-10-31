@@ -1,6 +1,6 @@
 package adventofcode
 
-class Day8 extends Problem[Int, Int] {
+class Day08 extends Problem[Int, Int] {
   case class Command(line: String) {
     val (operation, argument) = {
       val Array(o, a) = line.split(" ")

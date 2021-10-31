@@ -48,5 +48,4 @@ class Day21 extends Problem[Long, String] {
 
     (res1, res2)
   }
-
 }

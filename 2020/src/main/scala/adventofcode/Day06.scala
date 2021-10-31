@@ -1,6 +1,6 @@
 package adventofcode
 
-class Day6 extends Problem[Int, Int] {
+class Day06 extends Problem[Int, Int] {
   def solve(input: String) = {
     val groups = input.split("\n").foldLeft(List.empty[List[String]]) { case (acc, line) =>
       if (line.isEmpty) List.empty[String] :: acc

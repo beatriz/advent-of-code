@@ -2,7 +2,7 @@ package adventofcode
 
 import scala.util.Try
 
-class Day4 extends Problem[Int, Int] {
+class Day04 extends Problem[Int, Int] {
   val mandatoryKeys = Set("byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid")
 
   def validKeys(pass: Map[String, String]) = mandatoryKeys.subsetOf(pass.keySet)

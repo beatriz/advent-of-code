@@ -1,6 +1,6 @@
 package adventofcode
 
-class Day1 extends Problem[Int, Int] {
+class Day01 extends Problem[Int, Int] {
 
   def solve1(values: Seq[Int]): (Int, Int) = values match {
     case Nil => (0, 0)

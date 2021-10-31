@@ -1,6 +1,6 @@
 package adventofcode
 
-class Day5 extends Problem[Int, Int] {
+class Day05 extends Problem[Int, Int] {
   case class Range(lo: Int, up: Int)
   case class Seat(row: Int, column: Int) {
     lazy val id = row * 8 + column
