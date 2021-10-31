@@ -38,30 +38,9 @@ class Day14 extends Problem[Long, Int] {
 
     val res1 = run(lines, memUpdate1)
 
-//    auto generate_bit_variations(std::bitset<BITS> bs, Index i,
-//      const std::vector<Index>& vi, std::vector<std::bitset<BITS>>& vb)
-//    {
-//      if (i == vi.size()) {
-//        vb.push_back(bs);
-//        return;
-//      }
-//      bs[vi[i]] = 0;
-//      generate_bit_variations(bs, i+1, vi, vb);
-//      bs[vi[i]] = 1;
-//      generate_bit_variations(bs, i+1, vi, vb);
-//    }
-
-//    def combinations(str: Seq[Char], cache: Map[Int, Char], address: Int, value: Char) =
-//      str match {
-//        case Nil => cache.updated(address, value)
-//        case 'X' :: t =>
-//          val cache1 =
-//      }
-
-    def printAllCombinations(pattern: String, i: Int, res: Seq[String]) {
+    def printAllCombinations(pattern: String, i: Int, res: Seq[String]) = {
       if (i == pattern.length) {
         res :+ pattern
-//        System.out.println(pattern);
       }
 
       // if the current character is '?'

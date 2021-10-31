@@ -22,7 +22,6 @@ class Day20 extends Problem[Long, Long] {
       }
     }
     println(tiles.size)
-//    tiles.foreach(x => println(s"${x._1}:\n${x._2.print}"))
 
     val upDown = tiles.map(_._2.upBorder) ++ tiles.map(_._2.downBorder)
     println(upDown)
@@ -34,5 +33,4 @@ class Day20 extends Problem[Long, Long] {
 
     (0L, 0L)
   }
-
 }
