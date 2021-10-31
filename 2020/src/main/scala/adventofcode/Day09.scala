@@ -1,6 +1,6 @@
 package adventofcode
 
-class Day9 extends Problem[Long, Long] {
+class Day09 extends Problem[Long, Long] {
   def findInvalid(
       preamble: Seq[Long],
       curr: Long,

@@ -1,6 +1,6 @@
 package adventofcode
 
-class Day7 extends Problem[Int, Int] {
+class Day07 extends Problem[Int, Int] {
   case class BagInfo(n: Int, desc: String)
 
   def parse(lines: Seq[String]) =

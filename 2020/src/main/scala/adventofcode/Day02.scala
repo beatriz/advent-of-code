@@ -1,6 +1,6 @@
 package adventofcode
 
-class Day2 extends Problem[Int, Int] {
+class Day02 extends Problem[Int, Int] {
   def parse(str: String): (Int, Int, Char, String) = {
     val min = "^(\\d*)".r.findFirstIn(str).get.toInt
     val max = "\\-(\\d*)".r.findFirstIn(str).get.drop(1).toInt

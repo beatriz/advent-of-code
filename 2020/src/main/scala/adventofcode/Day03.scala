@@ -1,6 +1,6 @@
 package adventofcode
 
-class Day3 extends Problem[Long, Long] {
+class Day03 extends Problem[Long, Long] {
   def treesOnSlope(xAdvance: Int, yAdvance: Int, input: Seq[String]) = {
     val (res, _) = input.zipWithIndex.foldLeft(0L, 1) { case ((accTrees, accX), (line, i)) =>
       if (i == 0 || i % yAdvance != 0)
