@@ -1,0 +1,14 @@
+{
+  "name": "advent-of-code-2021",
+  "version": "1.0.0",
+  "description": "Solutions to Advent of Code 2021",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^16.11.10",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.2"
+  },
+  "scripts": {
+    "start": "sh -c 'ts-node ./src/day$0.ts'"
+  }
+}

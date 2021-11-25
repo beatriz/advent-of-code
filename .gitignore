@@ -1,4 +1,4 @@
-# project output directory
+# project output directory (Scala)
 **/target/
 
 # system and IDE setting files
@@ -15,4 +15,5 @@
 metals.sbt
 .bsp
 
+# JavaScript and TypeScript
 node_modules
