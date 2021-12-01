@@ -17,3 +17,5 @@ metals.sbt
 
 # JavaScript and TypeScript
 node_modules
+
+**/input/test.txt
