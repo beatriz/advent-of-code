@@ -40,7 +40,7 @@ class Line {
   }
 }
 
-const input = readLines("day5")
+const input = readLines(5)
 
 const lines = input.map(i => {
   const s = i.substring(0, i.indexOf('-') - 1).split(',')

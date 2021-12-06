@@ -1,6 +1,6 @@
 import {readLines} from "./util"
 
-const lines = readLines("day1").map(x => parseInt(x))
+const lines = readLines(1).map(x => parseInt(x))
 
 function countIncreases(arr: number[]) {
   const [res, _] = arr.reduce<[number, number?]>((acc: [number, number?], curr) => {

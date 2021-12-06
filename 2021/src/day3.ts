@@ -1,6 +1,6 @@
 import { readLines } from "./util";
 
-const lines = readLines("day3")
+const lines = readLines(3)
 
 function getMostCommonBit(bits: string[]): string | undefined {
   const zero = bits.filter(x => x === '0').length

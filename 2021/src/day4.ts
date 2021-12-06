@@ -39,7 +39,7 @@ class BingoBoard {
   }
 }
 
-const lines = readLines("day4")
+const lines = readLines(4)
 const numbers = lines[0].split(',').map(x => parseInt(x))
 
 const boardsInput = lines.slice(2).filter(x => x.length !== 0)
@@ -56,7 +56,7 @@ const [b, winners] = numbers.reduce<[BingoBoard[], BingoBoard[]]>((acc, n) => {
   const [currBoards, currWinners] = acc
   const newBoards = currBoards.map(b => b.checkNumber(n))
   const newWinners = newBoards.filter(b => b.isWinner())
-  
+
   return [newBoards.filter(b => !newWinners.find(w => w.id === b.id)), currWinners.concat(newWinners.map(w => w.setFinalNumber(n)))]
 }, [boards, []])
 

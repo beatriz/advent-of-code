@@ -51,7 +51,7 @@ class Location2 {
   }
 }
 
-const instructions: Instruction[] = readLines("day2").map(x => {
+const instructions: Instruction[] = readLines(2).map(x => {
   const arr = x.split(" ")
   if (arr[0] !== "forward" && arr[0] !== "down" && arr[0] !== "up") {
     throw "Unexpected direction"
