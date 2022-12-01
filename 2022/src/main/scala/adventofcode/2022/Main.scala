@@ -22,3 +22,5 @@ import scala.io.Source
 
 trait Problem[A, B]:
   def solve(input: String): (A, B)
+
+  def getLines(input: String): Seq[String] = input.split("\n")
