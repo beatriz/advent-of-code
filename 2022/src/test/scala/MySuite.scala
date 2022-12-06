@@ -77,4 +77,13 @@ class MySuite extends munit.FunSuite {
                   |move 1 from 1 to 2""".stripMargin
     testDay(new Day05(), input, "CMZ", "MCD")
   }
+
+  test("Day06") {
+    val c = new Day06()
+    testDay(c, "mjqjpqmgbljsphdztnvjfqwrcgsmlb", 7, 19)
+    testDay(c, "bvwbjplbgvbhsrlpgdmjqwftvncz", 5, 23)
+    testDay(c, "nppdvjthqldpwncqszvftbrmjlhg", 6, 23)
+    testDay(c, "nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 10, 29)
+    testDay(c, "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 11, 26)
+  }
 }
