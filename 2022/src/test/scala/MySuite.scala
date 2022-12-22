@@ -159,4 +159,13 @@ class MySuite extends munit.FunSuite {
 
     testDay(new Day11(), input, 10605, 0)
   }
+
+  test("Day12") {
+    val input = """Sabqponm
+                  |abcryxxl
+                  |accszExk
+                  |acctuvwj
+                  |abdefghi""".stripMargin
+    testDay(new Day12(), input, 31, 29)
+  }
 }
