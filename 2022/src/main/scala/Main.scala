@@ -1,5 +1,3 @@
-package adventofcode.`2022`
-
 import scala.io.Source
 
 @main def hello(problemN: String, remainingArgs: String*): Unit =
@@ -7,7 +5,7 @@ import scala.io.Source
   val isTest = remainingArgs.headOption.exists(_.toBoolean)
 
   val problem = Class
-    .forName("adventofcode.2022.Day" + problemN + "$")
+    .forName("Day" + problemN + "$")
     .getField("MODULE$")
     .get(classOf[Problem[_, _]])
     .asInstanceOf[Problem[_, _]]

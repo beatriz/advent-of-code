@@ -1,5 +1,3 @@
-package adventofcode.`2022`
-
 object Day02 extends Problem[Int, Int]:
   def solve(input: String): (Int, Int) =
     val lines = getLines(input)

@@ -1,5 +1,3 @@
-package adventofcode.`2022`
-
 object Day09 extends Problem[Int, Int]:
   def solve(input: String) =
     val finalM = getLines(input).foldLeft(Motion()) { case (m, line) =>

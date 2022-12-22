@@ -1,5 +1,3 @@
-package adventofcode.`2022`
-
 object Day04 extends Problem[Int, Int]:
   def solve(input: String): (Int, Int) =
     val (res1, res2) = getLines(input).foldLeft((0, 0)) {

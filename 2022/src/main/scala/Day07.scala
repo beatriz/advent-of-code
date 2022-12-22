@@ -1,5 +1,3 @@
-package adventofcode.`2022`
-
 object Day07 extends Problem[Long, Long]:
   def solve(input: String) =
     given dirMap: Map[String, Entity] = buildDirMap(getLines(input))

@@ -1,5 +1,3 @@
-package adventofcode.`2022`
-
 object Day06 extends Problem[Int, Int]:
   def solve(input: String) = (findStart(input, 4), findStart(input, 14))
 

@@ -1,5 +1,3 @@
-package adventofcode.`2022`
-
 object Day05 extends Problem[String, String]:
 
   def solve(input: String): (String, String) =

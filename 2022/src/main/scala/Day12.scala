@@ -1,5 +1,3 @@
-package adventofcode.`2022`
-
 import scala.collection.mutable
 
 object Day12 extends Problem[Int, Int]:
