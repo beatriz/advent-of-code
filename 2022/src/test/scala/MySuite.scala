@@ -9,7 +9,7 @@ class MySuite extends munit.FunSuite {
 
   test("Day01") {
     testDay(
-      new Day01(),
+      Day01,
       """1000
         |2000
         |3000
@@ -32,7 +32,7 @@ class MySuite extends munit.FunSuite {
 
   test("Day02") {
     testDay(
-      new Day02(),
+      Day02,
       """A Y
         |B X
         |C Z""".stripMargin,
@@ -43,7 +43,7 @@ class MySuite extends munit.FunSuite {
 
   test("Day03") {
     testDay(
-      new Day03(),
+      Day03,
       """vJrwpWtwJgWrhcsFMMfFFhFp
         |jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
         |PmmdzqPrVvPwwTWBwg
@@ -62,7 +62,7 @@ class MySuite extends munit.FunSuite {
                   |2-8,3-7
                   |6-6,4-6
                   |2-6,4-8""".stripMargin
-    testDay(new Day04(), input, 2, 4)
+    testDay(Day04, input, 2, 4)
   }
 
   test("Day05") {
@@ -75,16 +75,15 @@ class MySuite extends munit.FunSuite {
                   |move 3 from 1 to 3
                   |move 2 from 2 to 1
                   |move 1 from 1 to 2""".stripMargin
-    testDay(new Day05(), input, "CMZ", "MCD")
+    testDay(Day05, input, "CMZ", "MCD")
   }
 
   test("Day06") {
-    val c = new Day06()
-    testDay(c, "mjqjpqmgbljsphdztnvjfqwrcgsmlb", 7, 19)
-    testDay(c, "bvwbjplbgvbhsrlpgdmjqwftvncz", 5, 23)
-    testDay(c, "nppdvjthqldpwncqszvftbrmjlhg", 6, 23)
-    testDay(c, "nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 10, 29)
-    testDay(c, "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 11, 26)
+    testDay(Day06, "mjqjpqmgbljsphdztnvjfqwrcgsmlb", 7, 19)
+    testDay(Day06, "bvwbjplbgvbhsrlpgdmjqwftvncz", 5, 23)
+    testDay(Day06, "nppdvjthqldpwncqszvftbrmjlhg", 6, 23)
+    testDay(Day06, "nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 10, 29)
+    testDay(Day06, "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 11, 26)
   }
 
   test("Day07") {
@@ -112,7 +111,7 @@ class MySuite extends munit.FunSuite {
                   |5626152 d.ext
                   |7214296 k""".stripMargin
 
-    testDay(new Day07(), input, 95437, 24933642)
+    testDay(Day07, input, 95437, 24933642)
   }
 
   test("Day09") {
@@ -125,7 +124,7 @@ class MySuite extends munit.FunSuite {
                   |L 5
                   |R 2""".stripMargin
 
-    testDay(new Day09(), input, 13, 0)
+    testDay(Day09, input, 13, 0)
   }
 
   test("Day11") {
@@ -157,7 +156,7 @@ class MySuite extends munit.FunSuite {
                   |    If true: throw to monkey 0
                   |    If false: throw to monkey 1""".stripMargin
 
-    testDay(new Day11(), input, 10605, 0)
+    testDay(Day11, input, 10605, 0)
   }
 
   test("Day12") {
@@ -166,6 +165,6 @@ class MySuite extends munit.FunSuite {
                   |accszExk
                   |acctuvwj
                   |abdefghi""".stripMargin
-    testDay(new Day12(), input, 31, 29)
+    testDay(Day12, input, 31, 29)
   }
 }

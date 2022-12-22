@@ -1,6 +1,6 @@
 package adventofcode.`2022`
 
-class Day01 extends Problem[Int, Int]:
+object Day01 extends Problem[Int, Int]:
   def solve(input: String) =
     val lines = getLines(input)
     val elvesCalories = lines.foldLeft(List(0)) { case (acc, line) =>

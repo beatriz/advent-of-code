@@ -1,6 +1,6 @@
 package adventofcode.`2022`
 
-class Day04 extends Problem[Int, Int]:
+object Day04 extends Problem[Int, Int]:
   def solve(input: String): (Int, Int) =
     val (res1, res2) = getLines(input).foldLeft((0, 0)) {
       case ((acc1, acc2), line) =>

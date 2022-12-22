@@ -1,6 +1,6 @@
 package adventofcode.`2022`
 
-class Day09 extends Problem[Int, Int]:
+object Day09 extends Problem[Int, Int]:
   def solve(input: String) =
     val finalM = getLines(input).foldLeft(Motion()) { case (m, line) =>
       val Array(dirStr, movesStr) = line.split(" ")

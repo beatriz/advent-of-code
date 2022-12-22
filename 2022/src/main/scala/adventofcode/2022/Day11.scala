@@ -1,6 +1,6 @@
 package adventofcode.`2022`
 
-class Day11 extends Problem[Long, Long]:
+object Day11 extends Problem[Long, Long]:
   def solve(input: String) =
     val monkeyList = parse(input)
     (runNRounds(20, monkeyList), 0)

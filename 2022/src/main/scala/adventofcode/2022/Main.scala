@@ -4,11 +4,12 @@ import scala.io.Source
 
 @main def hello(problemN: String, remainingArgs: String*): Unit =
   // Scala3 still doesn't have support for optional arguments
-  val isTest = remainingArgs.headOption.map(_.toBoolean).getOrElse(false)
+  val isTest = remainingArgs.headOption.exists(_.toBoolean)
 
   val problem = Class
-    .forName(s"adventofcode.2022.Day$problemN")
-    .newInstance()
+    .forName("adventofcode.2022.Day" + problemN + "$")
+    .getField("MODULE$")
+    .get(classOf[Problem[_, _]])
     .asInstanceOf[Problem[_, _]]
 
   val file =

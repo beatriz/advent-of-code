@@ -1,6 +1,6 @@
 package adventofcode.`2022`
 
-class Day03 extends Problem[Int, Int]:
+object Day03 extends Problem[Int, Int]:
   def solve(input: String): (Int, Int) =
     val res1 = getLines(input).foldLeft(0) { case (acc, line) =>
       acc + itemPriority(getRepeatedItem(line).head)

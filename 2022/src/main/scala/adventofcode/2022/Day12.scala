@@ -2,7 +2,7 @@ package adventofcode.`2022`
 
 import scala.collection.mutable
 
-class Day12 extends Problem[Int, Int]:
+object Day12 extends Problem[Int, Int]:
   case class Pos(x: Int, y: Int)
 
   case class Grid(values: Array[Array[Char]]):

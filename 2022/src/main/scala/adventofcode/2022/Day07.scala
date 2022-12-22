@@ -1,6 +1,6 @@
 package adventofcode.`2022`
 
-class Day07 extends Problem[Long, Long]:
+object Day07 extends Problem[Long, Long]:
   def solve(input: String) =
     given dirMap: Map[String, Entity] = buildDirMap(getLines(input))
     val smallDirs = dirMap.collect {
@@ -47,14 +47,14 @@ class Day07 extends Problem[Long, Long]:
       .updated(fullName, ent)
       .updated(path.mkString, currDir.addChild(fullName))
 
-sealed trait Entity:
-  def children: Seq[String]
-  def size(using m: Map[String, Entity]): Long
+  sealed trait Entity:
+    def children: Seq[String]
+    def size(using m: Map[String, Entity]): Long
 
-case class File(size: Long) extends Entity:
-  val children = Nil
-  def size(using m: Map[String, Entity]) = size
+  case class File(size: Long) extends Entity:
+    val children = Nil
+    def size(using m: Map[String, Entity]) = size
 
-case class Dir(children: Seq[String] = Seq.empty) extends Entity:
-  def size(using m: Map[String, Entity]) = children.map(m(_).size).sum
-  def addChild(c: String) = this.copy(children = children :+ c)
+  case class Dir(children: Seq[String] = Seq.empty) extends Entity:
+    def size(using m: Map[String, Entity]) = children.map(m(_).size).sum
+    def addChild(c: String) = this.copy(children = children :+ c)

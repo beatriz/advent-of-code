@@ -1,6 +1,6 @@
 package adventofcode.`2022`
 
-class Day05 extends Problem[String, String]:
+object Day05 extends Problem[String, String]:
 
   def solve(input: String): (String, String) =
     val lines = getLines(input).filterNot(_.isEmpty)

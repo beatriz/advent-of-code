@@ -1,8 +1,6 @@
 package adventofcode.`2022`
 
-import adventofcode.`2022`.Day02.{HandShape, Result}
-
-class Day02 extends Problem[Int, Int]:
+object Day02 extends Problem[Int, Int]:
   def solve(input: String): (Int, Int) =
     val lines = getLines(input)
     val parsed = lines.map { str =>
@@ -20,7 +18,6 @@ class Day02 extends Problem[Int, Int]:
 
     (score1, score2)
 
-object Day02:
   sealed trait HandShape:
     def beats: HandShape
     def score: Int
