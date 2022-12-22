@@ -2,17 +2,16 @@ package adventofcode.`2022`
 
 class Day09 extends Problem[Int, Int]:
   def solve(input: String) =
-    val finalM = getLines(input).foldLeft(Motion()) {
-      case (m, line) =>
-        val Array(dirStr, movesStr) = line.split(" ")
-        m.move(Direction(dirStr), movesStr.toInt)
+    val finalM = getLines(input).foldLeft(Motion()) { case (m, line) =>
+      val Array(dirStr, movesStr) = line.split(" ")
+      m.move(Direction(dirStr), movesStr.toInt)
     }
     (finalM.visited.size, 0)
 
   case class Motion(head: Position, tail: Position, visited: Set[Position]):
     def move(dir: Direction, times: Int): Motion =
-      (0 until times).foldLeft(this){
-        case (acc, _) => acc.move(dir)
+      (0 until times).foldLeft(this) { case (acc, _) =>
+        acc.move(dir)
       }
 
     def move(dir: Direction): Motion =
@@ -21,8 +20,8 @@ class Day09 extends Problem[Int, Int]:
       Motion(newHead, newTail, visited + newTail)
 
   object Motion:
-    def apply(): Motion = Motion(Position(0, 0), Position(0, 0), Set(Position(0, 0)))
-
+    def apply(): Motion =
+      Motion(Position(0, 0), Position(0, 0), Set(Position(0, 0)))
 
   case class Position(x: Int, y: Int):
     def -(other: Position) = Position(other.x - x, other.y - y)
@@ -57,6 +56,3 @@ class Day09 extends Problem[Int, Int]:
     val effect = Position(1, 0)
   case object Left extends Direction:
     val effect = Position(-1, 0)
-
-
-

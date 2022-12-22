@@ -5,19 +5,20 @@ import adventofcode.`2022`.Day02.{HandShape, Result}
 class Day02 extends Problem[Int, Int]:
   def solve(input: String): (Int, Int) =
     val lines = getLines(input)
-    val parsed = lines.map{str =>
+    val parsed = lines.map { str =>
       val Array(theirs, mine) = str.split(" ")
       (HandShape(theirs), HandShape(mine), Result(mine))
     }
 
     val (score1, score2) = parsed.foldLeft((0, 0)) {
       case ((acc1, acc2), (theirs, mine, result)) =>
-        (acc1 + mine.battle(theirs).score + mine.score,
-          acc2 + result.shapeNeeded(theirs).score + result.score)
+        (
+          acc1 + mine.battle(theirs).score + mine.score,
+          acc2 + result.shapeNeeded(theirs).score + result.score
+        )
     }
 
     (score1, score2)
-
 
 object Day02:
   sealed trait HandShape:
@@ -51,9 +52,9 @@ object Day02:
   case object Win extends Result:
     val score = 6
     def shapeNeeded(other: HandShape) = other match {
-      case Paper => Scissor
+      case Paper   => Scissor
       case Scissor => Rock
-      case Rock => Paper
+      case Rock    => Paper
     }
   case object Draw extends Result:
     val score = 3

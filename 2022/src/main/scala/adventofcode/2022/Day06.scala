@@ -10,4 +10,3 @@ class Day06 extends Problem[Int, Int]:
       else findStartAux(chars.tail, value + 1)
 
     findStartAux(str.tail, n + 1)
-

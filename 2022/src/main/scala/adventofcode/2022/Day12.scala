@@ -6,7 +6,9 @@ class Day12 extends Problem[Int, Int]:
   case class Pos(x: Int, y: Int)
 
   case class Grid(values: Array[Array[Char]]):
-    private lazy val posValues = values.zipWithIndex.flatMap{ case (arr, y) => arr.zipWithIndex.map{ case (c, x) => (Pos(x, y), c)}}.toMap
+    private lazy val posValues = values.zipWithIndex.flatMap { case (arr, y) =>
+      arr.zipWithIndex.map { case (c, x) => (Pos(x, y), c) }
+    }.toMap
 
     def findElements(value: Char) = posValues.filter(_._2 == value).keys
 
@@ -17,7 +19,7 @@ class Day12 extends Problem[Int, Int]:
       def diff(or: Char, dest: Char) = (or, dest) match {
         case ('S', d) => d - 'a'
         case (o, 'E') => 'z' - o
-        case (o, d) => d - o
+        case (o, d)   => d - o
       }
 
       List(
@@ -25,7 +27,9 @@ class Day12 extends Problem[Int, Int]:
         Pos(origin.x - 1, origin.y),
         Pos(origin.x + 1, origin.y),
         Pos(origin.x, origin.y + 1)
-      ).filter(p => posValues.get(p).fold(false)(v => diff(originValue, v) <= 1))
+      ).filter(p =>
+        posValues.get(p).fold(false)(v => diff(originValue, v) <= 1)
+      )
 
   def bfs(grid: Grid, startingPoint: Pos) =
     val q = mutable.Queue.empty[Pos]
@@ -33,9 +37,9 @@ class Day12 extends Problem[Int, Int]:
     val m = mutable.Map.empty[Pos, Int]
     m(startingPoint) = 0
 
-    while(q.nonEmpty) {
+    while (q.nonEmpty) {
       val curr = q.dequeue()
-      grid.findPossibleNeighbors(curr).foreach{ p =>
+      grid.findPossibleNeighbors(curr).foreach { p =>
         if (!m.contains(p)) {
           m(p) = m(curr) + 1
           q.enqueue(p)
@@ -54,4 +58,3 @@ class Day12 extends Problem[Int, Int]:
     val startInA = startInABfs.flatMap(_.get(end)).toSeq
 
     (startInS, (startInA :+ startInS).min)
-
