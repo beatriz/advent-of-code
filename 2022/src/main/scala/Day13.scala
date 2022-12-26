@@ -2,7 +2,6 @@ import Day13.SimpleParser
 
 import scala.util.parsing.combinator.*
 
-// FIXME: This solution isn't working for my input, although it works for the example input
 object Day13 extends Problem[Int, Int]:
   sealed trait Element
   case class IntElem(value: Int) extends Element
@@ -22,8 +21,8 @@ object Day13 extends Problem[Int, Int]:
   def isOrderCorrect(left: Element, right: Element): Option[Boolean] =
     (left, right) match {
       case (IntElem(l), IntElem(r)) => if (l == r) None else Some(l < r)
-      case (ListElem(l), ListElem(r)) if l.isEmpty => Some(true)
-      case (ListElem(l), ListElem(r)) if r.isEmpty => Some(false)
+      case (ListElem(l), ListElem(r)) if l.isEmpty && r.nonEmpty => Some(true)
+      case (ListElem(l), ListElem(r)) if r.isEmpty && l.nonEmpty => Some(false)
       case (ListElem(l), ListElem(r)) =>
         l.zipAll(r, ListElem(List.empty), ListElem(List.empty))
           .flatMap(p => isOrderCorrect(p._1, p._2))
