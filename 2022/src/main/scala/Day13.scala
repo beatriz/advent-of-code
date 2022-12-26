@@ -18,25 +18,34 @@ object Day13 extends Problem[Int, Int]:
 
     def parse(input: String): Element = parse(element, input).get
 
-  def isOrderCorrect(left: Element, right: Element): Option[Boolean] =
-    (left, right) match {
-      case (IntElem(l), IntElem(r)) => if (l == r) None else Some(l < r)
-      case (ListElem(l), ListElem(r)) if l.isEmpty && r.nonEmpty => Some(true)
-      case (ListElem(l), ListElem(r)) if r.isEmpty && l.nonEmpty => Some(false)
-      case (ListElem(l), ListElem(r)) =>
-        l.zipAll(r, ListElem(List.empty), ListElem(List.empty))
-          .flatMap(p => isOrderCorrect(p._1, p._2))
-          .headOption
-      case (l: ListElem, r: IntElem) => isOrderCorrect(l, ListElem(List(r)))
-      case (l: IntElem, r: ListElem) => isOrderCorrect(ListElem(List(l)), r)
-    }
+  implicit def elementOrdering: Ordering[Element] = new Ordering[Element]:
+    override def compare(left: Element, right: Element): Int =
+      (left, right) match {
+        case (IntElem(l), IntElem(r)) => Ordering.Int.compare(l, r)
+        case (ListElem(l), ListElem(r)) if l.isEmpty && r.nonEmpty => -1
+        case (ListElem(l), ListElem(r)) if r.isEmpty && l.nonEmpty => 1
+        case (ListElem(l), ListElem(r)) =>
+          l.zipAll(r, ListElem(List.empty), ListElem(List.empty))
+            .map(p => compare(p._1, p._2))
+            .find(_ != 0)
+            .getOrElse(0)
+        case (l: ListElem, r: IntElem) => compare(l, ListElem(List(r)))
+        case (l: IntElem, r: ListElem) => compare(ListElem(List(l)), r)
+      }
 
   def solve(input: String) =
-    val parsed = getLines(input)
-      .grouped(3)
-      .map(strs => (SimpleParser.parse(strs.head), SimpleParser.parse(strs(1))))
-      .toSeq
+    val allPackets = getLines(input).filter(_.nonEmpty).map(SimpleParser.parse)
 
-    val orders = parsed.map(p => isOrderCorrect(p._1, p._2))
+    val pairsCorrectOrder = allPackets.grouped(2).toSeq.map(p => p.sorted == p)
+    val correctOrderIndexes =
+      pairsCorrectOrder.zipWithIndex.filter(_._1).map(_._2 + 1).sum
 
-    (orders.zipWithIndex.filter(_._1.contains(true)).map(_._2 + 1).sum, 0)
+    val separatorsIndexes =
+      val div1 = SimpleParser.parse("[[2]]")
+      val div2 = SimpleParser.parse("[[6]]")
+      val sortedP = (allPackets ++ List(div1, div2)).sorted.zipWithIndex
+      val first = sortedP.find(_._1 == div1).get._2 + 1
+      val second = sortedP.find(_._1 == div2).get._2 + 1
+      first * second
+
+    (correctOrderIndexes, separatorsIndexes)
