@@ -193,4 +193,10 @@ class MySuite extends munit.FunSuite {
 
     testDay(Day13, input0, 13, 140 )
   }
+
+  test("Day14") {
+    val input = """498,4 -> 498,6 -> 496,6
+                  |503,4 -> 502,4 -> 502,9 -> 494,9""".stripMargin
+    testDay(Day14, input, 24, 93)
+  }
 }
