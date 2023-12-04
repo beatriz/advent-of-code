@@ -1,5 +1,5 @@
 object Day01 extends Problem[Int, Int] {
-  case class CharAt(index: Int, char: Char)  
+  case class CharAt(index: Int, char: Char)
   val numberMap = Map(
     "one" -> '1',
     "two" -> '2',
@@ -12,13 +12,20 @@ object Day01 extends Problem[Int, Int] {
     "nine" -> '9'
   )
 
-  def charsToNumber(chars: List[CharAt]) = s"${(chars.minBy(_.index).char)}${chars.maxBy(_.index).char}".toInt
+  def charsToNumber(chars: List[CharAt]) =
+    s"${(chars.minBy(_.index).char)}${chars.maxBy(_.index).char}".toInt
 
-  override def solve(input: String): (Int, Int) = 
-    getLines(input).foldLeft((0, 0)){
-        case ((acc1, acc2), line) =>
-            val charsFromDigits = line.zipWithIndex.collect{ case (v, i) if v.isDigit => CharAt(i, v)}.toList
-            val charsFromLetters = numberMap.flatMap{ case (k, v) => k.r.findAllMatchIn(line).map(m => CharAt(m.start, v))}.toList
-            (acc1 + charsToNumber(charsFromDigits) , acc2 + charsToNumber(charsFromDigits ::: charsFromLetters))
+  override def solve(input: String): (Int, Int) =
+    getLines(input).foldLeft((0, 0)) { case ((acc1, acc2), line) =>
+      val charsFromDigits = line.zipWithIndex.collect {
+        case (v, i) if v.isDigit => CharAt(i, v)
+      }.toList
+      val charsFromLetters = numberMap.flatMap { case (k, v) =>
+        k.r.findAllMatchIn(line).map(m => CharAt(m.start, v))
+      }.toList
+      (
+        acc1 + charsToNumber(charsFromDigits),
+        acc2 + charsToNumber(charsFromDigits ::: charsFromLetters)
+      )
     }
 }
